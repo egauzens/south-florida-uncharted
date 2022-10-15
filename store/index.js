@@ -3,7 +3,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_CART(state, data){
+  SET_CART(state, data) {
     state.cart = data
   },
 }

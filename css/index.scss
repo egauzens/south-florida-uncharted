@@ -1,0 +1,13 @@
+@import 'https://fonts.googleapis.com/css?family=Asap:400,400i,500,600,700&display=swap';
+
+$system-font:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+$font-family: 'Titillium Web', sans-serif;
+
+html, div, p, span, h1, h2, h3, h4, h5 {
+  font-family: $font-family;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: #403e3a;
+  margin: 0;
+}
