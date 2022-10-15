@@ -60,7 +60,7 @@ typings/
 .env
 
 # env variable setup script
-.sh
+*.sh
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
