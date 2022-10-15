@@ -14,24 +14,13 @@
 </template>
 
 <script>
-import { pathOr } from 'ramda'
 
-import createClient from '@/plugins/contentful.js'
-const client = createClient()
+import { mapState } from 'vuex'
 
 export default {
   name: 'Footer',
-  data() {
-    return {
-      logoUrl: ''
-    }
-  },
-  async mounted() {
-    let url = ''
-    await client.getAsset('6cKi1Jrr7ppsLgRTOJWBiJ').then(({ fields }) => {
-      url = pathOr('', ['file', 'url'], fields)
-    })
-    this.logoUrl = url
+  computed: {
+    ...mapState(['logoUrl']),
   }
 }
 </script>
