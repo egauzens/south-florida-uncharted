@@ -1,9 +1,15 @@
 <template>
-  <Tutorial/>
+  <div>
+    Cart = {{ cart }}
+  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'IndexPage'
+  name: 'Home',
+  computed: {
+    ...mapState(['cart'])
+  }
 }
 </script>

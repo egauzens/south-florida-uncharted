@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'south-florida-uncharted',
+    title: 'South Florida Uncharted',
     htmlAttrs: {
       lang: 'en'
     },
@@ -9,11 +9,22 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'keywords', 
+        name: 'keywords', 
+        content: 'miami fishing, miami charter, miami tour, miami eco tour, south florida fishing, south florida guide, south florida charter, south florida tour'
+      },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+
+  env: {
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
+    CONTENTFUL_API_HOST: process.env.CONTENTFUL_API_HOST
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -23,7 +34,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/contentful',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
