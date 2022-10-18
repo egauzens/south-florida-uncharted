@@ -23,9 +23,12 @@ export const actions = {
       commit('SET_LOGO_URL', pathOr('', ['file', 'url'], fields))
     })
   },
-  emptyCart({commit}) {
+  emptyCart({ commit }) {
     commit('SET_CART', [])
   },
+  addToCart({ commit, state }, data) {
+    commit('SET_CART', [...state.cart, data])
+  }
 }
 
 export const getters = {
@@ -35,5 +38,12 @@ export const getters = {
       cost += item.price
     });
     return cost
+  },
+  totalItems (state) {
+    let total = 0
+    state.cart.forEach(item => {
+      total += 1 + item.numAdditional;
+    })
+    return total
   }
 }

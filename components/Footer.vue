@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer mt-16">
     <img height="80" :src="logoUrl">
     <h5>Let's catch some fish!</h5>
     <h5>786-970-8686</h5>

@@ -17,7 +17,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap' }
     ]
   },
 
@@ -36,6 +37,8 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/contentful',
+    '@/plugins/observe-visibility',
+    { src: '@/plugins/persisted-state', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

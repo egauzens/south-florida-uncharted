@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Asap:400,400i,500,600,700&display=swap';
+@import './variables.scss';
 
 $system-font:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 $font-family: 'Titillium Web', sans-serif;
@@ -8,14 +9,22 @@ html, div, p, span, h1, h2, h3, h4, h5 {
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 500;
-  color: #403e3a;
+  color: $blue;
   margin: 0;
 }
 
+body {
+  margin: .5rem 0;
+}
+
+.page {
+  margin: 0 .5rem 1rem .5rem;
+}
+
 .heading1 {
-  font-size:2rem;
+  font-size:2.5rem;
   font-weight:500;
-  line-height:2.75rem;
+  line-height:3.25rem;
 }
 
 .heading2 {
@@ -28,6 +37,12 @@ html, div, p, span, h1, h2, h3, h4, h5 {
   font-size:1rem;
   font-weight:500;
   line-height:1.875rem;
+}
+
+.parallaxHeading1 {
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1.2;
 }
 
 $spaces:
