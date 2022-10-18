@@ -6,9 +6,12 @@
       <div class="heading2" v-if="cart.length == 0">
         You have no trips in your cart
       </div>
-      <div v-else>
+      <div class="cart-items-container" v-else>
         <div v-on:click="emptyCart" class="remove-trips-button"><i class="el-icon-delete mr-4" />
           Empty Cart
+        </div>
+        <div v-if="fishingTrips.length > 0">
+          <cart-item v-for="trip in fishingTrips" :key="trip.id" :item="trip" />
         </div>
       </div>
     </section>
@@ -16,12 +19,13 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'Cart',
   computed: {
-    ...mapState(['cart'])
+    ...mapState(['cart']),
+    ...mapGetters(['fishingTrips', 'tours'])
   },
   methods: {
     ...mapActions(['emptyCart'])
@@ -30,8 +34,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .header-section {
   text-align: center;
+}
+.cart-items-container {
+  text-align: -webkit-center;
 }
 .remove-trips-button {
   color: red;
