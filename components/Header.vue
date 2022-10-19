@@ -1,27 +1,44 @@
 <template>
-  <div class="header">
-    <img class="mr-16" height="80" :src="logoUrl">
-      <div>
-        <ul>
-          <li
+  <div class="header ml-16 mr-24">
+    <img class="logo mr-16" height="80" :src="logoUrl">
+    <div class="expanded-navigation">
+      <ul>
+        <li
+          v-for="link in links"
+          :key="link.href"
+          class="mx-12 heading2"
+        >
+          <nuxt-link
+            :to="link.href"
+            :class="{ active: activeLink(link.href) }"
+            exact-active-class="active"
+          >
+            {{ link.displayTitle }}
+          </nuxt-link>
+        </li>
+        <nuxt-link class="shopping-cart-link" :class="{ 'active-cart': activeLink('/cart') }" to="/cart"><el-button class="shopping-cart-button" icon="el-icon-shopping-cart-1"><template v-if="totalItems > 0">{{totalItems}}</template></el-button></nuxt-link>
+      </ul>
+    </div>
+    <div class="collapsed-navigation">
+      <el-dropdown class="mr-16" trigger="click" @command="menuItemClicked">
+        <span class="dropdown-link heading2 px-8">
+          <i class="el-icon-more"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item 
             v-for="link in links"
             :key="link.href"
-            class="mx-12 heading2"
-            style="z-index: 100;"
+            :command="link.href"
+            class="heading2"
           >
-            <nuxt-link
-              :to="link.href"
-              :class="{ active: activeLink(link.href) }"
-              exact-active-class="active"
-            >
+            <a :class="{ active: activeLink(link.href) }">
               {{ link.displayTitle }}
-            </nuxt-link>
-          </li>
-          <nuxt-link class="shopping-cart-link" :class="{ 'active-cart': activeLink('/cart') }" to="/cart"><el-button class="shopping-cart-button" icon="el-icon-shopping-cart-1"><template v-if="totalItems > 0">{{totalItems}}</template></el-button></nuxt-link>
-        </ul>
-      </div>
-
-
+            </a>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <nuxt-link class="shopping-cart-link" :class="{ 'active-cart': activeLink('/cart') }" to="/cart"><el-button class="shopping-cart-button" icon="el-icon-shopping-cart-1"><template v-if="totalItems > 0">{{totalItems}}</template></el-button></nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -72,13 +89,16 @@ export default {
     }
   },
   methods: {
-    activeLink: function(href) {
+    activeLink(href) {
       if (this.firstPath == href) {
         return true
       } else {
         return false
       }
     },
+    menuItemClicked(href) {
+      this.$router.push({path: href})
+    }
   }
 }
 </script>
@@ -91,10 +111,42 @@ export default {
   align-items: center;
 }
 
-ul {
-  padding: 0;
-  list-style-type: none;
-  display: flex;
+@media only screen and (max-width: 880px) {
+  .logo {
+    height: 60px;
+  }
+  .expanded-navigation {
+    display: none;
+  }
+  .collapsed-navigation {
+    display: flex;
+  }
+  .header {
+    justify-content: space-between;
+  }
+}
+@media only screen and (min-width: 880px) {
+  .expanded-navigation {
+    display: flex;
+  }
+  .collapsed-navigation {
+    display: none;
+  }
+  .header {
+    justify-content: start;
+  }
+}
+
+.dropdown-link {
+    cursor: pointer;
+    border: 1px solid $blue;
+  }
+.expanded-navigation {
+  ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+  }
 }
 
 a {
@@ -102,7 +154,7 @@ a {
   color: $blue;
 }
 
-.active, a:hover {
+.active, a:hover, li:hover>a {
   color: $yellow;
   text-decoration: underline;
   text-underline-offset: .5rem;
@@ -147,5 +199,9 @@ a {
 }
 ::v-deep i.el-icon-shopping-cart-1:hover {
   color: $yellow;
+}
+
+::v-deep .el-dropdown-menu__item {
+  background-color: transparent !important;
 }
 </style>

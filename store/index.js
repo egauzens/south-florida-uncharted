@@ -1,4 +1,4 @@
-import { pathOr } from 'ramda'
+import { pathOr, propOr } from 'ramda'
 
 import createClient from '@/plugins/contentful.js'
 const client = createClient()
@@ -22,7 +22,23 @@ export const mutations = {
   },
   INCREASE_ID(state) {
     state.id++
-  }
+  },
+  ADD_ADDITIONAL(state, id) {
+    state.cart.forEach(item => {
+      if (item.id == id) {
+        item.numAdditional++
+      }
+    })
+  },
+  REMOVE_ADDITIONAL(state, id) {
+    state.cart.forEach(item => {
+      if (item.id == id) {
+        if (item.numAdditional > 0) {
+          item.numAdditional--
+        }
+      }
+    })
+  },
 }
 
 export const actions = {
@@ -38,23 +54,31 @@ export const actions = {
   addToCart({ commit, state }, data) {
     commit('SET_CART', [...state.cart, { ...data, 'id': state.id }])
     commit('INCREASE_ID')
+  },
+  addAdditional({ commit}, data) {
+    const id = propOr('', 'id', data)
+    commit('ADD_ADDITIONAL', id)
+  },
+  removeAdditional({ commit}, data) {
+    const id = propOr('', 'id', data)
+    commit('REMOVE_ADDITIONAL', id)
   }
 }
 
 export const getters = {
-  totalCost (state) {
-    let cost = 0
+  subtotal (state) {
+    let subtotal = 0
     state.cart.forEach(item => {
-      cost += item.price
-    });
-    return cost
+      const additionalPerPerson = propOr(0, 'additionalPeoplePrice', item)
+      const numAdditional = propOr(0, 'numAdditional', item)
+      const itemPrice = propOr(0, 'price', item)
+      subtotal = subtotal + itemPrice + additionalPerPerson * numAdditional
+    })
+
+    return subtotal
   },
   totalItems (state) {
-    let total = 0
-    state.cart.forEach(item => {
-      total = total + 1 + item.numAdditional;
-    })
-    return total
+    return state.cart.length
   },
   fishingTrips (state) {
     return state.cart.filter(item => {
