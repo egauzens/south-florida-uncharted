@@ -3,15 +3,15 @@
     <section class="header-section m-8">
       <div class="heading2"><em>Pay For Your Trip</em></div>
       <div class="heading1"><strong>Your Cart</strong></div>
-      <div class="heading2" v-if="cart.length == 0">
+      <div v-show="cart.length == 0" class="heading2" >
         You have no trips in your cart
       </div>
-      <div class="cart-items-container" v-else>
+      <div v-show="cart.length > 0" class="cart-items-container" >
         <div v-on:click="emptyCart" class="remove-trips-button mb-16"><i class="el-icon-delete mr-4" />
           Empty Cart
         </div>
         <div v-show="fishingTrips.length > 0">
-          <cart-item class="mb-16" v-for="trip in fishingTrips" :key="trip.id" :item="trip" />
+          <cart-item class="mb-16" v-for="(trip, index) in fishingTrips" :key="`${index}`" :item="trip" />
           <div class="subtotal-text heading1">
             Subtotal: ${{ subtotal }}
           </div>

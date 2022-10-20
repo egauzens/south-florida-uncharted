@@ -38,7 +38,7 @@ export default {
     '@/plugins/element-ui',
     '@/plugins/contentful',
     '@/plugins/observe-visibility',
-    { src: '@/plugins/persisted-state', mode: 'client' }
+    { src: '@/plugins/persisted-state', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
