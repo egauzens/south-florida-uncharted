@@ -16,7 +16,13 @@
             {{ link.displayTitle }}
           </nuxt-link>
         </li>
-        <nuxt-link class="shopping-cart-link" :class="{ 'active-cart': activeLink('/cart') }" to="/cart"><el-button class="shopping-cart-button" icon="el-icon-shopping-cart-1"><template v-if="totalItems > 0">{{totalItems}}</template></el-button></nuxt-link>
+        <nuxt-link class="shopping-cart-link" :class="{ 'active-cart': activeLink('/cart') }" to="/cart">
+          <el-button class="shopping-cart-button" icon="el-icon-shopping-cart-1">
+            <span class="item-notification" v-show="totalItems > 0">
+              {{totalItems}}
+            </span>
+          </el-button>
+        </nuxt-link>
       </ul>
     </div>
     <div class="collapsed-navigation">
@@ -37,7 +43,11 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <nuxt-link class="shopping-cart-link" :class="{ 'active-cart': activeLink('/cart') }" to="/cart"><el-button class="shopping-cart-button" icon="el-icon-shopping-cart-1"><template v-if="totalItems > 0">{{totalItems}}</template></el-button></nuxt-link>
+      <nuxt-link class="shopping-cart-link" :class="{ 'active-cart': activeLink('/cart') }" to="/cart">
+        <el-button class="shopping-cart-button" icon="el-icon-shopping-cart-1">
+          <span class="item-notification" v-show="totalItems > 0">{{totalItems}}</span>
+        </el-button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -124,6 +134,9 @@ export default {
   .header {
     justify-content: space-between;
   }
+  .item-notification {
+    padding: 0 .35rem 0.05rem .4rem;
+  }
 }
 @media only screen and (min-width: 880px) {
   .expanded-navigation {
@@ -134,6 +147,9 @@ export default {
   }
   .header {
     justify-content: start;
+  }
+  .item-notification {
+    padding: 0 .4rem 0.05rem .28rem;
   }
 }
 
@@ -179,18 +195,18 @@ a {
   align-self: end;
 }
 
-::v-deep .el-button {
-  span {
-    margin: 0;
-    vertical-align: text-top;
-    color: white;
-    line-height: 1;
-    font-size: .75rem;
-    font-weight: bold;
-    border-radius:50%;
-    background: red;
-    padding: 0 .4rem .05rem .4375rem;
-  }
+.item-notification {
+  position: relative;
+  left: -.3rem;
+  top: -.3rem;
+  margin: 0;
+  vertical-align: top;
+  color: white;
+  line-height: 1;
+  font-size: .75rem;
+  font-weight: bold;
+  border-radius:50%;
+  background: red;
 }
 
 ::v-deep i.el-icon-shopping-cart-1 {

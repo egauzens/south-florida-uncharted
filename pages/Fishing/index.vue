@@ -12,7 +12,7 @@
             <strong> {{card.name}} </strong>
           </div>
           <div class="heading2">${{ card.price }} single person</div>
-          <div v-if="card.additionalPeoplePrice != 0" class="heading3">${{ card.additionalPeoplePrice }} per addional person</div>
+          <div v-show="card.additionalPeoplePrice != 0" class="heading3">${{ card.additionalPeoplePrice }} per addional person</div>
           <el-button class="mt-8">
             <a href="mailto:david@southfloridauncharted.com?subject=Inshore%20Kayak%20Fishing%20Trip&body=Hi!%20I%20would%20like%20to%20book%20an%20inshore%20kayak%20fishing%20trip%20on%20<insert%20date%20of%20booking>%20for%20<insert%20number%20of%20people>%20person(s).">
               <strong>Book Now!</strong>
