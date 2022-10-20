@@ -55,8 +55,7 @@ export default {
         }
       },
       paypalButtonStyle: {
-        label: '',
-        size: 'medium',
+        size: 'large',
         layout: 'vertical',
         shape: 'pill',
         color: 'blue'
