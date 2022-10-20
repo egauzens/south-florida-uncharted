@@ -24,7 +24,7 @@
         </div>
       </el-card>
     </VueSlickCarousel>
-    
+
     <div class="m-16">
       <div class="heading1 mb-8">Included: 
         <span class="heading2">Hobie Mirage drive kayak, Rods and reels, PFD, Bait, Tackle, VHF radio, transportation back to launch site, GoPro rental available for additional charge.</span>
@@ -98,7 +98,7 @@ export default {
       settings: {
         dots: true,
         infinite: true,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 3000,
         speed: 1500,
         slidesToShow: 4,
