@@ -1,15 +1,15 @@
 <template>
-  <div class="footer mt-16">
+  <div class="footer heading2 mt-16">
     <img height="80" :src="logoUrl">
-    <h5>Let's catch some fish!</h5>
-    <h5>786-970-8686</h5>
-    <h5>david@southfloridauncharted.com</h5>
-    <a href="https://www.facebook.com/South-Florida-Uncharted-695389614144741/" style="color: black">
-        <i class="fab fa-facebook-square mr-3"></i>
-      </a>
-      <a href="https://www.instagram.com/southfloridauncharted/" style="color: black">
-        <i class="fab fa-instagram"></i>
-      </a>
+    <div>Let's catch some fish!</div>
+    <div>786-970-8686</div>
+    <div>david@southfloridauncharted.com</div>
+    <a class="mr-8" href="https://www.instagram.com/southfloridauncharted/" target="_blank">
+      <font-awesome-icon :icon="['fab', 'instagram']" />
+    </a>
+    <a href="https://www.facebook.com/South-Florida-Uncharted-695389614144741/" target="_blank">
+      <font-awesome-icon :icon="['fab', 'facebook']" />
+    </a>
   </div>
 </template>
 
@@ -25,8 +25,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../css/variables.scss';
+
 .footer {
   text-align: center;
+  a {
+    color: $blue;
+  }
 }
 </style>
