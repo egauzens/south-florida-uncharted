@@ -139,7 +139,8 @@ export default {
 
 .dropdown-link {
     cursor: pointer;
-    border: 1px solid $blue;
+    border: 2px solid $blue;
+    border-radius: 15%;
   }
 .expanded-navigation {
   ul {

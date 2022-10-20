@@ -67,7 +67,7 @@ $spaceTypes: (
 );
 
 @function toRem($base) {
-  @return $base / 16 * 1rem;
+  @return calc($base / 16)  * 1rem;
 };
 
 @each $space in $spaces {

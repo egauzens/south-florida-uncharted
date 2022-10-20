@@ -1,5 +1,5 @@
 <template>
-  <div class="item-container m-16">
+  <div class="item-container">
     <img class="cart-image" width="240px" :src="imageSrc"/>
     <div class="cart-text p-16">
       <div class="heading2">{{ item.name }}</div>
@@ -70,7 +70,6 @@ export default {
 }
 .item-container {
   display: flex;
-  max-width: 600px;
   outline: 1px solid $blue;
 }
 ::v-deep .el-button {

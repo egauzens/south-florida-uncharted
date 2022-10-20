@@ -7,14 +7,14 @@
         You have no trips in your cart
       </div>
       <div class="cart-items-container" v-else>
-        <div v-on:click="emptyCart" class="remove-trips-button"><i class="el-icon-delete mr-4" />
+        <div v-on:click="emptyCart" class="remove-trips-button mb-16"><i class="el-icon-delete mr-4" />
           Empty Cart
         </div>
         <div v-if="fishingTrips.length > 0">
-          <cart-item v-for="trip in fishingTrips" :key="trip.id" :item="trip" />
-        </div>
-        <div class="heading1">
-          Subtotal: ${{ subtotal }}
+          <cart-item class="mb-16" v-for="trip in fishingTrips" :key="trip.id" :item="trip" />
+          <div class="subtotal-text heading1">
+            Subtotal: ${{ subtotal }}
+          </div>
         </div>
       </div>
     </section>
@@ -37,12 +37,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.subtotal-text {
+  text-align: start;
+}
 .header-section {
-  text-align: center;
+  text-align: -webkit-center;
 }
 .cart-items-container {
-  text-align: -webkit-center;
+  max-width: 600px;
 }
 .remove-trips-button {
   color: red;
