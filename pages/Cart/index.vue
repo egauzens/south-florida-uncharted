@@ -1,44 +1,106 @@
 <template>
   <div>
-    <section class="header-section m-8">
+    <div class="header-section m-8">
       <div class="heading2"><em>Pay For Your Trip</em></div>
       <div class="heading1"><strong>Your Cart</strong></div>
-      <div v-if="cart.length == 0" class="heading2" >
+      <div v-if="cart.length == 0" class="heading2">
         You have no trips in your cart
       </div>
-      <div v-else class="cart-items-container" >
+      <div v-else class="cart-items-container">
         <div v-on:click="emptyCart" class="remove-trips-button mb-16"><i class="el-icon-delete mr-4" />
           Empty Cart
         </div>
-        <div v-show="fishingTrips.length > 0">
-          <cart-item class="mb-16" v-for="(trip, index) in fishingTrips" :key="index" :item="trip" />
-          <div class="subtotal-text heading1">
-            Subtotal: ${{ subtotal }}
+        <cart-item class="mb-16" v-for="(trip, index) in cart" :key="index" :item="trip" />
+        <div class="payment-container">
+          <label class="heading2"><input class="deposit-checkbox" v-on:change="depositChanged" :value="makeDeposit" type="checkbox">Make $100 deposit and pay the rest in cash*</input></label>
+          <div class="heading3">* Cash payments can be made on the day of the trip before launch</div>
+          <div class="heading1">
+            Total: <strong>${{ total }}</strong>
+          </div>
+          <div>
+            <span class="heading1 mr-16">Checkout:</span>
+            <span class="paypal-container">
+              <paypal-checkout 
+                :amount="`${total}`" 
+                currency="USD"
+                :client="credentials"
+                env="sandbox"
+                :button-style="paypalButtonStyle"
+                v-on:payment-completed="paymentCompleted"
+                v-on:payment-cancelled="paymentCancelled"
+              />
+            </span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script>
+import { propOr } from 'ramda';
 import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'Cart',
+  data() {
+    return {
+      credentials: {
+        sandbox: process.env.PAYPAL_CLIENT_ID,
+        production: process.env.PAYPAL_CLIENT_ID
+      },
+      experienceOptions: {
+        input_fields: {
+          no_shipping: 1
+        }
+      },
+      paypalButtonStyle: {
+        label: '',
+        size: 'medium',
+        layout: 'vertical',
+        shape: 'pill',
+        color: 'blue'
+      },
+      makeDeposit: false
+    }
+  },
   computed: {
     ...mapState(['cart']),
-    ...mapGetters(['fishingTrips', 'tours', 'subtotal'])
+    ...mapGetters(['subtotal']),
+    total() {
+      return this.makeDeposit ? 100 * this.cart.length : this.subtotal 
+    }
   },
   methods: {
-    ...mapActions(['emptyCart'])
-  }
+    ...mapActions(['emptyCart']),
+    paymentCompleted(value) {
+      console.log("PAYMENT COMPLETED: ", value)
+    },
+    paymentCancelled(value) {
+      console.log("PAYMENT CANCELLED: ", value)
+    },
+    depositChanged({ target }) {
+      this.makeDeposit = propOr(false, 'checked', target)
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.subtotal-text {
-  text-align: start;
+@media only screen and (max-width: 615px) {
+  .paypal-container {
+    display: block;
+    text-align: -webkit-center;
+  }
+}
+@media only screen and (min-width: 615px) {
+  .paypal-container {
+    display: inline-flex;
+    text-align: unset;
+  }
+}
+.payment-container {
+  text-align: -webkit-left;
 }
 .header-section {
   text-align: -webkit-center;
@@ -52,5 +114,14 @@ export default {
 }
 .remove-trips-button:hover {
   text-decoration: underline;
+}
+.paypal-container {
+  vertical-align: text-top;
+}
+.deposit-checkbox {
+  margin-left: 0;
+  margin-right: .5rem;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 </style>

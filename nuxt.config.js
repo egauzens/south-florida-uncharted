@@ -25,7 +25,10 @@ export default {
   env: {
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
     CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-    CONTENTFUL_API_HOST: process.env.CONTENTFUL_API_HOST
+    CONTENTFUL_API_HOST: process.env.CONTENTFUL_API_HOST,
+    PAYPAL_ACCOUNT: process.env.PAYPAL_ACCOUNT,
+    PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
+    PAYPAL_CLIENT_SECRET: process.env.PAYPAL_CLIENT_SECRET
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -38,7 +41,8 @@ export default {
     '@/plugins/element-ui',
     '@/plugins/contentful',
     '@/plugins/observe-visibility',
-    { src: '@/plugins/persisted-state', ssr: false }
+    { src: '@/plugins/persisted-state', ssr: false },
+    { src: '@/plugins/paypal', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

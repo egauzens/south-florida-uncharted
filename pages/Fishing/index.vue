@@ -1,12 +1,12 @@
 <template>
   <div>
     <section class="header-section mb-16">
-      <div class="heading2"><em>Catch Fish With Dave</em></div>
+      <div class="heading2"><em>Let's catch some fish!</em></div>
       <div class="heading1"><strong>Kayak Fishing Trips</strong></div>
     </section>
     <VueSlickCarousel v-bind="settings">
       <el-card v-for="card in cards" :key="card.name" shadow="hover" :body-style="{ padding: '0px'}">
-        <img class="card-image" :src="card.image.fields.file.url">
+        <div :style="{ height: '20rem', width: '100%', 'background-size': 'cover', 'background-image': `url(${card.image.fields.file.url})` }" />
         <div class="card-body m-16">
           <div class="heading2">
             <strong> {{card.name}} </strong>
@@ -14,7 +14,7 @@
           <div class="heading2">${{ card.price }} single person</div>
           <div v-show="card.additionalPeoplePrice != 0" class="heading3">${{ card.additionalPeoplePrice }} per addional person</div>
           <el-button class="mt-8">
-            <a href="mailto:david@southfloridauncharted.com?subject=Inshore%20Kayak%20Fishing%20Trip&body=Hi!%20I%20would%20like%20to%20book%20an%20inshore%20kayak%20fishing%20trip%20on%20<insert%20date%20of%20booking>%20for%20<insert%20number%20of%20people>%20person(s).">
+            <a :href="`mailto:david@southfloridauncharted.com?subject=${card.name}%20Fishing%20Trip&body=Hi!%20I%20would%20like%20to%20book%20a%20${card.name}%20Fishing%20Trip%20on%20<insert%20date%20of%20booking>%20for%20<insert%20number%20of%20people>%20person(s).`">
               <strong>Book Now!</strong>
             </a>
           </el-button>
@@ -86,6 +86,9 @@ export default {
       cards
     }
   },
+  mounted() {
+    this.settings.slidesToShow = this.cards.length
+  },
   data() {
     return {
       numberFishCaught: 0,
@@ -95,11 +98,11 @@ export default {
       settings: {
         dots: true,
         infinite: true,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 3000,
         speed: 1500,
         slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToScroll: 1,
         initialSlide: 0,
         pauseOnDotsHover: true,
         pauseOnFocus: true,
@@ -110,7 +113,6 @@ export default {
             breakpoint: 1200,
             settings: {
               slidesToShow: 3,
-              slidesToScroll: 3,
               infinite: true,
               dots: true
             }
@@ -119,24 +121,16 @@ export default {
             breakpoint: 880,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2
             }
           },
           {
             breakpoint: 480,
             settings: {
               slidesToShow: 1,
-              slidesToScroll: 1
             }
           }
         ]
       }
-    }
-  },
-  computed: {
-    cardSpan() {
-
     }
   },
   methods: {
@@ -241,7 +235,6 @@ export default {
     color: $yellow;
     font-size: .75rem;
   }
-  
   .slick-prev {
     z-index: 1;
     left: 20px;
