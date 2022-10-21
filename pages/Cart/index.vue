@@ -101,9 +101,6 @@ export default {
 .payment-container {
   text-align: -webkit-left;
 }
-.header-section {
-  text-align: -webkit-center;
-}
 .cart-items-container {
   max-width: 600px;
 }

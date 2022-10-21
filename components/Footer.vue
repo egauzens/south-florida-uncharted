@@ -4,12 +4,14 @@
     <div>Let's catch some fish!</div>
     <div>786-970-8686</div>
     <div>david@southfloridauncharted.com</div>
-    <a class="mr-8" href="https://www.instagram.com/southfloridauncharted/" target="_blank">
-      <font-awesome-icon :icon="['fab', 'instagram']" />
-    </a>
-    <a href="https://www.facebook.com/South-Florida-Uncharted-695389614144741/" target="_blank">
-      <font-awesome-icon :icon="['fab', 'facebook']" />
-    </a>
+    <client-only>
+      <a class="mr-8" href="https://www.instagram.com/southfloridauncharted/" target="_blank">
+        <font-awesome-icon :icon="['fab', 'instagram']" />
+      </a>
+      <a href="https://www.facebook.com/South-Florida-Uncharted-695389614144741/" target="_blank">
+        <font-awesome-icon :icon="['fab', 'facebook']" />
+      </a>
+    </client-only>
   </div>
 </template>
 

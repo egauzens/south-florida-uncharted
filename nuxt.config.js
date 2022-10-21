@@ -43,7 +43,7 @@ export default {
     '@/plugins/observe-visibility',
     { src: '@/plugins/persisted-state', ssr: false },
     { src: '@/plugins/paypal', ssr: false },
-    { src: '@/plugins/fontawesome.js', mode: 'client' }
+    { src: '@/plugins/fontawesome.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
