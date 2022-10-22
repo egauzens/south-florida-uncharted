@@ -20,6 +20,9 @@ body {
 }
 
 .header-section {
+  @supports (-moz-appearance:none) {
+    text-align: -moz-center !important;
+  }
   text-align: -webkit-center;
 }
 

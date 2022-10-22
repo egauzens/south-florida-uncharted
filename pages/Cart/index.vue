@@ -89,6 +89,9 @@ export default {
 @media only screen and (max-width: 615px) {
   .paypal-container {
     display: block;
+    @supports (-moz-appearance:none) {
+      text-align: -moz-center !important;
+    }
     text-align: -webkit-center;
   }
 }
@@ -99,6 +102,9 @@ export default {
   }
 }
 .payment-container {
+  @supports (-moz-appearance:none) {
+    text-align: -moz-left !important;
+  }
   text-align: -webkit-left;
 }
 .cart-items-container {

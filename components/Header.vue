@@ -249,8 +249,7 @@ a {
 
 ::v-deep i.el-icon-shopping-cart-1 {
   color: $blue;
-  -webkit-text-stroke-width: .03rem
-  
+  -webkit-text-stroke-width: .03rem;
 }
 ::v-deep i.el-icon-shopping-cart-1:hover {
   color: $yellow;

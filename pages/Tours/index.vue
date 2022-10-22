@@ -13,11 +13,11 @@
           </div>
           <div class="heading2">${{ card.price }} single person</div>
           <div v-show="card.additionalPeoplePrice != 0" class="heading3">${{ card.additionalPeoplePrice }} per addional person</div>
-          <el-button class="mt-8">
-            <nuxt-link :to="`/tours/${card.name}`">
+          <nuxt-link class="mt-8" :to="`/tours/${card.name}`">
+            <el-button>
               <strong>View Details</strong>
-            </nuxt-link>
-          </el-button>
+            </el-button>
+          </nuxt-link>
         </div>
       </el-card>
     </VueSlickCarousel>
@@ -137,13 +137,6 @@ export default {
         this.numberTournamentsWon = 6
         this.numberHappyCustomers = 100
       }
-    },
-    addToCartClicked(card) {
-      this.addToCart({
-        ...card, 
-        numAdditional: 0
-      })
-      this.$router.push({path: '/cart'})
     }
   }
 }
