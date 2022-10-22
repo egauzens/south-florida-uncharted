@@ -71,7 +71,7 @@ export default {
 @import '../../css/variables.scss';
 .card-image {
   width: 100%;
-  border-radius: 5%;
+  border-radius: 1rem;
 }
 .row {
   display: flex;

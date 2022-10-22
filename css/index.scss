@@ -16,7 +16,7 @@ html, div, p, span, h1, h2, h3, h4, h5 {
 }
 
 body {
-  margin: .5rem 0;
+  margin: 0 0 .5rem 0;
 }
 
 .header-section {
@@ -43,6 +43,13 @@ body {
   font-size:1rem;
   font-weight:500;
   line-height:1.875rem;
+}
+
+.heading4 {
+  font-size:1rem;
+  font-weight:500;
+  line-height:1.875rem;
+  color: $yellow !important;
 }
 
 .parallaxHeading1 {
