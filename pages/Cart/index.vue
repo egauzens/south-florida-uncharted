@@ -78,13 +78,17 @@ export default {
     paymentCompleted(paymentInfo) {
       /*this.setPaymentInfo({
         payerInfo : pathOr(null, ['payer','payer_info'], paymentInfo),
-        transactions : propOr(null, 'transactions', paymentInfo)
-      })
-      this.$router.push({path: '/payment-success'})*/
-      console.log("PAYMENT COMPLETED: ", value)
+        transactions : propOr(null, 'transactions', paymentInfo),
+        stillOwed : this.subtotal - 
+      })*/
+      this.$router.push({path: '/payment-success'})
+      console.log("PAYMENT COMPLETED: ", paymentInfo)
     },
-    paymentCancelled(value) {
-      console.log("PAYMENT CANCELLED: ", value)
+    paymentCancelled() {
+      this.$notify.error({
+        title: 'Payment Error',
+        message: 'This payment was cancelled'
+      });
     },
     depositChanged({ target }) {
       this.makeDeposit = propOr(false, 'checked', target)

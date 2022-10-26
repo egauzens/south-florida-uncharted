@@ -35,7 +35,6 @@ export default {
       .then(({ fields }) => {
         return fields
       })
-      console.log("FIELDS = ", fields.gridImages)
     return {
       fields
     }
