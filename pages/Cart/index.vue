@@ -81,6 +81,7 @@ export default {
         transaction : propOr(null, 'transactions', paymentInfo)[0],
         totalOwed : this.subtotal 
       })
+      this.emptyCart()
       this.$router.push({path: '/payment-success'})
     },
     paymentCancelled() {
