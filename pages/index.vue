@@ -2,18 +2,18 @@
   <div class="mt-16">   
     <el-row class="row" :gutter="10">
       <el-col :span="12" :xs="24">
-        <img width="100%" :src="fields.mainImage.fields.file.url" />
+        <img v-on:click="imageClicked" width="100%" :src="fields.mainImage.fields.file.url" />
       </el-col>
       <el-col :span="12" :xs="24">
         <el-col :span="11">
           <el-row>
-            <img width="100%" :src="fields.gridImages[0].fields.file.url" />
+            <img v-on:click="imageClicked" width="100%" :src="fields.gridImages[0].fields.file.url" />
           </el-row>
           <el-row>
-            <img width="100%" :src="fields.gridImages[1].fields.file.url" />
+            <img v-on:click="imageClicked" width="100%" :src="fields.gridImages[1].fields.file.url" />
           </el-row>
         </el-col>
-        <el-col :span="13"><img width="100%" :src="fields.gridImages[2].fields.file.url" /></el-col>
+        <el-col :span="13"><img v-on:click="imageClicked" width="100%" :src="fields.gridImages[2].fields.file.url" /></el-col>
       </el-col>
     </el-row>
     <div class="mx-16" v-html="parseMarkdown(fields.description)" />
@@ -38,6 +38,11 @@ export default {
       fields
     }
   },
+  methods: {
+    imageClicked() {
+      this.$router.push({path: '/fishing'})
+    }
+  }
 }
 </script>
 
@@ -47,6 +52,7 @@ export default {
 }
 img {
   border-radius: 1rem;
+  cursor: pointer;
 }
 
 // needed to override imported markdown
