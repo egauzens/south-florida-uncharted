@@ -100,7 +100,17 @@ export const getters = {
       return item.type == 'Tour'
     })
   },
-  payerEmail (state) {
-    return pathOr('', ['payerInfo', 'email'], state.paymentInfo)
+  confirmationNumber (state) {
+    const resources = pathOr('', ['paymentInfo', 'transaction', 'related_resources'], state)
+    return pathOr('', ['sale', 'id'], resources[0])
+  },
+  totalStillOwed (state) {
+    const totalOwed = pathOr(0, ['paymentInfo', 'totalOwed'], state)
+    const totalPaid = pathOr(0, ['paymentInfo', 'transaction', 'amount', 'total'], state)
+
+    return totalOwed - totalPaid
+  },
+  payerName (state) {
+    return pathOr('', ['paymentInfo', 'payerInfo', 'first_name'], state)
   }
 }

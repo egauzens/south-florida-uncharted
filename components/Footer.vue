@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     logoClicked() {
-      this.$router.push({path: '#top'})
+      this.$router.push('/#top')
     }
   }
 }

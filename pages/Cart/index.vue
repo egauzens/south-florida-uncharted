@@ -22,6 +22,7 @@
             <span class="paypal-container">
               <paypal-checkout 
                 :amount="`${total}`" 
+                :items="items"
                 currency="USD"
                 :client="credentials"
                 :env="paypalEnv"
@@ -71,6 +72,30 @@ export default {
     },
     paypalEnv() {
       return process.env.PAYPAL_ENVIRONMENT
+    },
+    items() {
+      let items = []
+      this.cart.forEach(item => {
+        const numAdditional = propOr(0, 'numAdditional', item)
+        const itemPrice = this.makeDeposit ? 100 : (propOr(0, 'price', item) + numAdditional * propOr(0, 'additionalPeoplePrice', item))
+        items.push({
+          "name" : `${item.name}`,
+          "description" : `${item.type}`,
+          "quantity" : "1",
+          "price" : `${itemPrice}`,
+          "currency" : "USD"
+        })
+        if (numAdditional > 0) {
+          items.push({
+            "name" : `${item.name} - additional people`,
+            "description" : `${item.type}`,
+            "quantity" : `${numAdditional}`,
+            "price" : "0",
+            "currency" : "USD"
+          })
+        }
+      })
+      return items
     }
   },
   methods: {
