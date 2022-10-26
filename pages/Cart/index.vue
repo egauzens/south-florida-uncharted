@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { propOr } from 'ramda';
+import { pathOr, propOr } from 'ramda';
 import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
