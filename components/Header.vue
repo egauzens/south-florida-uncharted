@@ -13,7 +13,7 @@
         </client-only>
       </span>
       <span>
-        <i class="el-icon-message mr-4" />david@southfloridauncharted.com
+        <i class="el-icon-message mr-4" />dgauzens@gmail.com
       </span>
     </div>
     <div class="header pl-16 pr-24">

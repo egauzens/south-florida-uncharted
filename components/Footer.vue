@@ -3,7 +3,7 @@
     <img v-on:click="logoClicked" height="80" :src="logoUrl">
     <div>Let's catch some fish!</div>
     <div>786-970-8686</div>
-    <div>david@southfloridauncharted.com</div>
+    <div>dgauzens@gmail.com</div>
     <client-only>
       <a class="mr-8" href="https://www.instagram.com/southfloridauncharted/" target="_blank">
         <font-awesome-icon :icon="['fab', 'instagram']" />

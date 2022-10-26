@@ -12,7 +12,7 @@
         <div class="heading2">${{ card.price }} single person</div>
         <div v-show="card.additionalPeoplePrice != 0" class="heading3">${{ card.additionalPeoplePrice }} per addional person</div>
         <el-button class="mt-8">
-          <a :href="`mailto:david@southfloridauncharted.com?subject=${card.name}&body=Hi!%20I%20would%20like%20to%20book%20a%20${card.name}%20on%20<insert%20date%20of%20booking>%20for%20<insert%20number%20of%20people>%20person(s).`">
+          <a :href="`mailto:dgauzens@gmail.com?subject=${card.name}&body=Hi!%20I%20would%20like%20to%20book%20a%20${card.name}%20on%20<insert%20date%20of%20booking>%20for%20<insert%20number%20of%20people>%20person(s).`">
             <strong>Book Now!</strong>
           </a>
         </el-button>
