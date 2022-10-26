@@ -99,5 +99,8 @@ export const getters = {
     return state.cart.filter(item => {
       return item.type == 'Tour'
     })
+  },
+  payerEmail (state) {
+    return pathOr('', ['payerInfo', 'email'], state.paymentInfo)
   }
 }

@@ -17,7 +17,7 @@
       </span>
     </div>
     <div class="header pl-16 pr-24">
-      <img :on-click="logoClicked" class="logo mr-16" height="80" :src="logoUrl">
+      <img v-on:click="logoClicked" class="logo mr-16" height="80" :src="logoUrl">
       <div class="expanded-navigation">
         <ul>
           <li
@@ -160,6 +160,9 @@ export default {
 .header {
   display: flex;
   align-items: center;
+  img {
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: 880px) {

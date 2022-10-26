@@ -1,6 +1,6 @@
 <template>
   <div class="footer heading2 mt-16">
-    <img :on-click="logoClicked" height="80" :src="logoUrl">
+    <img v-on:click="logoClicked" height="80" :src="logoUrl">
     <div>Let's catch some fish!</div>
     <div>786-970-8686</div>
     <div>david@southfloridauncharted.com</div>
@@ -39,6 +39,9 @@ export default {
   text-align: center;
   a {
     color: $blue;
+  }
+  img {
+    cursor: pointer;
   }
 }
 </style>

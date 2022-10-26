@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="cart.payerEmail != ''" class="header-section m-8">
+    <div v-if="payerEmail != ''" class="header-section m-8">
       <div class="heading2"><em>Payment Confirmation</em></div>
       <div class="heading1"><strong>Thank You</strong></div>
       <div class="heading2">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Payment-Success',
@@ -27,6 +27,7 @@ export default {
   },
   computed: {
     ...mapState(['cart']),
+    ...mapGetters(['payerEmail'])
   },
 }
 </script>

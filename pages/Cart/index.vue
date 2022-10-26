@@ -76,18 +76,17 @@ export default {
   methods: {
     ...mapActions(['emptyCart', 'setPaymentInfo']),
     paymentCompleted(paymentInfo) {
-      /*this.setPaymentInfo({
+      this.setPaymentInfo({
         payerInfo : pathOr(null, ['payer','payer_info'], paymentInfo),
-        transactions : propOr(null, 'transactions', paymentInfo),
-        stillOwed : this.subtotal - 
-      })*/
+        transaction : propOr(null, 'transactions', paymentInfo)[0],
+        totalOwed : this.subtotal 
+      })
       this.$router.push({path: '/payment-success'})
-      console.log("PAYMENT COMPLETED: ", paymentInfo)
     },
     paymentCancelled() {
       this.$notify.error({
         title: 'Payment Error',
-        message: 'This payment was cancelled'
+        message: 'Your payment was cancelled'
       });
     },
     depositChanged({ target }) {
