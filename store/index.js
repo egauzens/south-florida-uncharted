@@ -5,6 +5,7 @@ const client = createClient()
 
 export const state = () => ({
   cart: [],
+  paymentInfo: null,
   logoUrl: '',
   // We must create our own unique id's to keep track of trips that are added to the cart
   id: 0,
@@ -13,6 +14,9 @@ export const state = () => ({
 export const mutations = {
   SET_CART(state, data) {
     state.cart = data
+  },
+  SET_PAYMENT_INFO(state, data) {
+    state.paymentInfo = data
   },
   SET_LOGO_URL(state, data) {
     state.logoUrl = data
@@ -50,6 +54,12 @@ export const actions = {
   emptyCart({ commit }) {
     commit('SET_CART', [])
     commit('RESET_ID')
+  },
+  setPaymentInfo({ commit }, data) {
+    commit('SET_PAYMENT_INFO', data)
+  },
+  clearPaymentInfo({ commit }) {
+    commit('SET_PAYMENT_INFO', null)
   },
   addToCart({ commit, state }, data) {
     commit('SET_CART', [...state.cart, { ...data, 'id': state.id }])

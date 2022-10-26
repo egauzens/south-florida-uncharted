@@ -24,7 +24,7 @@
                 :amount="`${total}`" 
                 currency="USD"
                 :client="credentials"
-                env="sandbox"
+                :env="paypalEnv"
                 :button-style="paypalButtonStyle"
                 v-on:payment-completed="paymentCompleted"
                 v-on:payment-cancelled="paymentCancelled"
@@ -46,8 +46,8 @@ export default {
   data() {
     return {
       credentials: {
-        sandbox: process.env.PAYPAL_CLIENT_ID,
-        production: process.env.PAYPAL_CLIENT_ID
+        sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
+        production: process.env.PAYPAL_CLIENT_ID_PRODUCTION
       },
       experienceOptions: {
         input_fields: {
@@ -68,11 +68,19 @@ export default {
     ...mapGetters(['subtotal']),
     total() {
       return this.makeDeposit ? 100 * this.cart.length : this.subtotal 
+    },
+    paypalEnv() {
+      return process.env.PAYPAL_ENVIRONMENT
     }
   },
   methods: {
-    ...mapActions(['emptyCart']),
-    paymentCompleted(value) {
+    ...mapActions(['emptyCart', 'setPaymentInfo']),
+    paymentCompleted(paymentInfo) {
+      /*this.setPaymentInfo({
+        payerInfo : pathOr(null, ['payer','payer_info'], paymentInfo),
+        transactions : propOr(null, 'transactions', paymentInfo)
+      })
+      this.$router.push({path: '/payment-success'})*/
       console.log("PAYMENT COMPLETED: ", value)
     },
     paymentCancelled(value) {
