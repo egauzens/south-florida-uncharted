@@ -49,11 +49,6 @@ export default {
       card: cards[0]
     }
   },
-  data() {
-    return {
-      
-    }
-  },
   methods: {
     ...mapActions(['addToCart']),
     addToCartClicked(card) {

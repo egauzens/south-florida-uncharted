@@ -15,10 +15,8 @@
         </el-col>
         <el-col :span="13"><img width="100%" :src="fields.gridImages[2].fields.file.url" /></el-col>
       </el-col>
-    </el-row>  
-    <div class="heading2 mx-16">
-      {{ fields.description }}
-    </div>
+    </el-row>
+    <div class="mx-16" v-html="parseMarkdown(fields.description)" />
   </div>
 </template>
 
@@ -26,10 +24,11 @@
 import createClient from '@/plugins/contentful.js'
 const client = createClient()
 
+import marked from '@/mixins/marked.js'
+
 export default {
   name: 'About',
-  components: { 
-  },
+  mixins: [marked],
   async asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
     const fields = await client.getEntry('4plAWEONnS5dpaOATPzVFV')
       .then(({ fields }) => {
@@ -37,10 +36,6 @@ export default {
       })
     return {
       fields
-    }
-  },
-  data() {
-    return {
     }
   },
 }
@@ -52,5 +47,12 @@ export default {
 }
 img {
   border-radius: 1rem;
+}
+
+// needed to override imported markdown
+::v-deep p {
+  font-size:1.5rem;
+  font-weight:500;
+  line-height:2.25rem;
 }
 </style>
