@@ -60,5 +60,6 @@ img {
   font-size:1.5rem;
   font-weight:500;
   line-height:2.25rem;
+  margin-bottom: .5rem;
 }
 </style>
