@@ -17,7 +17,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/dolphin.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/uncharted-transparent.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap' }
     ]
   },
