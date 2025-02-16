@@ -8,11 +8,12 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name:"google-site-verification", content:"_U_w5RtHpbDbPdFRdUELkJiaL0Wmzv6eAAVVV5Ew9Fk" },
       { hid: 'description', name: 'description', content: '' },
       {
         hid: 'keywords', 
         name: 'keywords', 
-        content: 'miami fishing, miami charter, miami tour, miami eco tour, south florida fishing, south florida guide, south florida charter, south florida tour'
+        content: 'miami fishing, miami charter, miami tour, miami eco tour, south florida fishing, south florida guide, south florida charter, south florida tour, kayak, fishing, miami, south florida'
       },
       { name: 'format-detection', content: 'telephone=no' }
     ],
